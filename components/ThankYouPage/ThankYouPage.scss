@@ -1,0 +1,79 @@
+@import 'public/index.scss';
+.ThankYouPage{
+	color: #fff;
+    display: block;
+    flex: 1 0 auto;
+    font-family: 'Montserrat-Medium';
+    background: linear-gradient(90deg, #030A42 0%, #00D9C6 100%);
+	> h1{
+		margin-top: 2%;
+		font-weight: 600;
+		font-size: 48px;
+		text-align: center;
+		text-transform: uppercase;
+	}
+	> p{
+		font-family: 'Montserrat-Light';
+		text-align: center;
+		padding-top: 20px;
+		font-weight: 100;
+		font-size: 20px;
+	}
+	button{
+		display: block;
+		margin: auto;
+		color: #fff;
+		cursor: pointer;
+		outline: none;
+		border: 5px solid $maincolor ;
+		font-size: 30px;
+		line-height: 37px;
+		text-transform: uppercase;
+		background: $maincolor;
+		border-radius: 40px;
+		padding: 10px 30px;
+		transition: .225s;
+
+		&:hover{
+			border-color: #fff;
+			color: $maincolor;
+			background-color: #fff;
+		}
+		>svg{
+			margin: 10px; 
+		}
+		margin-top: 50px;
+	}
+	.algbut{
+		border: 5px solid #fff;
+		background: transparent;
+		padding: 10px 40px;
+	}
+}
+@media screen and (max-width: 800px){
+	.ThankYouPage{
+		display: flex;
+		justify-content: center;
+		flex-direction: column;
+		padding: 5%;
+		br{
+			display: none;
+		}
+		> h1{
+			font-size: calc(20px + 2vw);
+		}
+		>p{
+			font-size: calc(10px + 1vw);
+		}
+		button{
+			display: flex;
+			align-items: center;
+			font-size: calc(20px + 1vw);
+			padding: calc(5px + 1vw) calc(5px + 1vw);
+		}
+		.algbut{
+			border: 3px solid #fff;
+			padding: calc(5px + 1vw) calc(15px + 1vw);
+		}
+	}
+}

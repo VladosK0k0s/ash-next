@@ -1,0 +1,38 @@
+.LiqForm{
+	transition: .225s;
+	display: flex;
+	align-items: center;
+	text-align: center;
+	
+	button{
+		color: white;
+		font-family: 'Montserrat-Medium';
+		font-style: normal;
+		font-weight: 400;
+		font-size: calc(18px + 0.5vw)! important;
+		width: calc(350px + 5vw) !important;
+		line-height: 37px;
+		cursor: pointer;
+		outline: none;
+		border: none;
+		padding: 20px 50px 20px 50px;
+		margin: auto;
+		background: #07D359;
+		border-radius: 40px;
+		img{
+			margin: 0;
+			padding-right: 10px;
+		}
+	}
+}
+@media screen and (max-width: 1100px){
+	.LiqForm{
+		button{
+			width: auto;
+			padding: 10px 20px 10px 20px;
+		}
+		img{
+			width: calc(30px + 1vw);
+		}
+	}
+}

@@ -1,0 +1,26 @@
+@import 'src/index.scss';
+.Offer{
+    padding: 0 5% 0 5%;
+    flex: 1 0 auto;
+    font-family: 'Montserrat-Medium';
+    background: linear-gradient(90deg, #030A42 0%, #00D9C6 100%);
+    color: #fff;
+    h4{
+        text-align: center;
+        a{
+            font-size: 0.9em;
+        }
+    }
+    p{
+        margin: 0;
+        text-align: justify;
+    }
+    h5{
+        margin-top: 1em;
+        text-decoration: underline;
+    }
+    h6{
+        margin-top: 3em;
+        font-weight: bold;
+    }
+}
