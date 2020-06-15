@@ -1,5 +1,4 @@
 import React from 'react';
-// import './MainSlider.scss';
 import  Link  from 'next/link'
 
 
