@@ -11,7 +11,9 @@ class OnMain extends React.Component {
     render() {
         return (
             <div className="OnMain">
-                <Link href="/">На головну</Link>
+                <Link href="/">
+                    <a>На головну</a>
+                </Link>
             </div>
         );
     }

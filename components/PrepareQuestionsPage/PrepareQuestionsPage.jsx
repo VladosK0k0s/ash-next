@@ -536,17 +536,19 @@ class PrepareQuestionsPage extends Component {
                                 <p>
                                     Погоджуюсь з{" "}
                                     <Link href="/offer">
-                                        умовами Публічної оферти
+                                        <a>умовами Публічної оферти</a>
                                     </Link>{" "}
                                     та{" "}
                                     <Link href="/policy">
-                                        умовами Політики конфіденційності
+                                        <a>умовами Політики конфіденційності</a>
                                     </Link>
                                 </p>
                             </div>
                         </div>
                         <div className="buttons">
-                            <Link href="/">На головну</Link>
+                            <Link href="/">
+                                <a>На головну</a>
+                            </Link>
                             <button
                                 style={{ whiteSpace: "nowrap" }}
                                 onClick={this.handleClose}

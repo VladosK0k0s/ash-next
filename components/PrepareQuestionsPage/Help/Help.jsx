@@ -79,7 +79,9 @@ class Help extends React.Component {
                                 Так
                             </button>
                             <Link href="/">
-                                <button className="customButton">Ні</button>
+                                <a>
+                                    <button className="customButton">Ні</button>
+                                </a>
                             </Link>
                         </div>
                     </>

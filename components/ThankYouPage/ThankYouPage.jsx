@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import { findDOMNode } from "react-dom";
-import "./ThankYouPage.scss";
 import { FaFileDownload } from "react-icons/fa";
 
 class ThankYouPage extends Component {
