@@ -1,12 +1,12 @@
-import MainSlider from "../components/MainSlider/MainSlider";
+import Offer from "../components/Offer/Offer";
 import Header from "../components/Header/Header";
 import Footer from "../components/Footer/Footer";
 
-export default function Home() {
+export default function OfferPage(props) {
     return (
         <div className="App">
             <Header />
-            <MainSlider />
+            <Offer />
             <Footer />
         </div>
     );

@@ -1,20 +1,28 @@
-import React from 'react';
-import './Declaration.scss';
-import Content from './Content/Content.jsx';
-import { Redirect } from "react-router-dom";
+import React, { useState, useEffect } from "react";
+import Content from "./Content/Content.jsx";
 
+const Declaration = (props) => {
+    const [isChecked, setIsChecked] = useState(false);
+    const [isPass, setIsPass] = useState(false);
 
-const Declaration = (props) =>{
-	const pass = JSON.parse(localStorage.getItem('passed')).pass;
-	return(
-		<div className='Declaration'>
-			{
-				pass
-				? <Content prevObj={props.prevObj}/>
-				: <Redirect to='/' />
-			}
-		</div>
-	)
-}
+    useEffect(() => {
+        const pass = JSON.parse(localStorage.getItem("passed")).pass;
+        setIsPass(pass);
+        setIsChecked(true);
+    }, []);
+
+    if (isChecked && !isPass) {
+        return props.router.push({
+            pathname: "/",
+        });
+    }
+    return (
+        <div className="Declaration">
+            {isChecked && (
+                <Content prevObj={props.prevObj} router={props.router} />
+            )}
+        </div>
+    );
+};
 
 export default Declaration;

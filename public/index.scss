@@ -1,474 +1,1535 @@
 @import "~bootstrap/scss/bootstrap";
 
-html, body {
-	margin: 0;
-	height: 100%;
+html,
+body {
+    margin: 0;
+    height: 100%;
 }
-#root{
-	height: 100%;
+#root {
+    height: 100%;
 }
 
-$maincolor: #07CAD3;
-$maincolor2: #00D9C6;
+$maincolor: #07cad3;
+$maincolor2: #00d9c6;
 $primaryWidth: 40%;
 $primaryHeight: 100%;
-@font-face{
-	font-family: 'Montserrat-Bold';
-	src: url('./fonts/Montserrat-Bold.otf');
-	src: url('./fonts/Montserrat-Bold.ttf');
+@font-face {
+    font-family: "Montserrat-Bold";
+    src: url("./fonts/Montserrat-Bold.otf");
+    src: url("./fonts/Montserrat-Bold.ttf");
 }
-@font-face{
-    font-family: 'Montserrat-Light';
-    src: url('./fonts/Montserrat-Light.otf');
-    src: url('./fonts/Montserrat-Light.ttf')
+@font-face {
+    font-family: "Montserrat-Light";
+    src: url("./fonts/Montserrat-Light.otf");
+    src: url("./fonts/Montserrat-Light.ttf");
 }
-@font-face{
-    font-family: 'Montserrat-Medium';
-    src: url('./fonts/Montserrat-Medium.otf');
-    src: url('./fonts/Montserrat-Medium.ttf');
+@font-face {
+    font-family: "Montserrat-Medium";
+    src: url("./fonts/Montserrat-Medium.otf");
+    src: url("./fonts/Montserrat-Medium.ttf");
 }
-.MainSlider{
-	padding: 2%;
-	padding-left: 5%;
-	padding-bottom: 4%;
-	flex: 1 0 auto;
-	display: flex;
-	flex-direction: row;
-	background: url('./images/image1.png');
-	// background: url('./images/image1.webp');
-	background-size: cover;
-	background-position: center;
-	> .main{
-		width: 90%;
-		margin: 0;
-		> h1{
-			margin-bottom: 0;
-			font-family: 'Montserrat-Bold';
-			font-weight: bold;
-			font-size: calc(17px + 2vw);
-			color: white;
-			text-transform: uppercase;
-		}
-		> p{
-			margin: 0;
-			color: white;
-			font-family: 'Montserrat-Medium';
-			font-style: normal;
-			font-weight: 500;
-			font-size: calc(14px + 1vw);
-		}
-		> h3{
-			display: inline-block;
-			margin-top: 3%;
-			font-family: 'Montserrat-Bold';
-			color: white;
-			font-style: normal;
-			font-weight: bold;
-			font-size: calc(7px + 1vw);
-			line-height: 200%;
-			text-transform: uppercase;
-			margin-bottom: 0;
-		}
-		> span{
-			display: inline-block;
-			font-family: 'Montserrat-Light';
-			font-style: normal;
-			font-weight: 600;
-			font-size: calc(8px + 0.5vw);
-			color: #FFFFFF;
-		}
-		> .about{	
-			display: inline-block;
-			margin: 0;
-			margin-top: 50px;
-			> a{
-				text-decoration: none;
-				border: none;
-				button{
-					text-decoration: none;
-					border: none;
-					cursor: pointer;
-					padding: 20px  calc(50px + 2vw) 20px  calc(50px + 2vw);
-					font-family: 'Montserrat-Medium';
-					font-style: normal;
-					font-weight: 600;
-					font-size: calc(10px + 1vw);
-					line-height: 37px;
-					display: flex;
-					align-items: center;
-					text-align: center;
-					background: $maincolor2;
-					border-radius: 40px;
-					color: #FFFFFF;
-					&:focus{
-						outline: none;
-					}
-					&:active{
-						outline: none;
-					}
-				}
-			}
-			p{
-				margin: auto;
-				text-align: center;
-				font-family: 'Montserrat-Light';
-				font-size: 20px;
-				line-height: 24px;
-				padding-top:20px;
-				text-decoration: underline;
-				text-decoration-skip: spaces;
-				color: #FFFFFF;
-			}
-
-		}
-	}
-	.steps_mobile{
-		display: none;
-		>div{
-			display: none;
-		}
-	}
-	.steps_desktop{
-		height: 68vh;
-		flex-grow: 1;
-		display: flex;
-		flex-direction: row;
-		width: 100%;
-		> .circles{
-			margin: 0% 0% 0% 20%;
-			display: flex;
-			flex-direction: column;
-			justify-content: space-around;
-			align-items: center;
-			> div{
-				border-radius: 50%;
-				width: calc(70px + 1vw);
-				height: calc(70px + 1vw);
-				background: $maincolor;
-				display: flex;
-				align-items: center;
-				justify-content: space-between;		
-				>p{
-					width: calc(70px + 1vw);
-					color: #FFFFFF;
-					text-align: center;
-					margin-bottom: 0;
-					font-family: 'Montserrat-Bold';
-					font-size: calc(40px + 1vw);
-				}
-			}
-			>span{
-				width: 8px;
-				height: 20vh;
-				margin-bottom: -2vw;
-				margin-top: -2vw;
-				border: 8px solid $maincolor;
-			}
-		}
-		>div{
-			margin-top: 0;
-			display: flex;
-			flex-direction: column;
-			justify-content: space-between;
-			>p{
-				max-width: 310px;
-				text-align: center;
-				margin: 0 -10px 0 -10px;
-				padding: 0 20px 0 20px;
-				padding-top: 0;
-				font-family: 'Montserrat-Light';
-				font-size: 1.5vw;
-				font-weight: 900;
-				line-height: 29px;
-				color: #FFFFFF;
-			}
-		}
-	}
-}
-@media screen and (max-width: 1100px) {
-	.MainSlider{
-		flex: 1 0 auto;
-		.main{
-			display: block;
-			width: 100%;
-			h1{
-				font-size: calc(15px + 2vw);
-			}
-			p{
-				font-size: calc(8px + 2vw);
-			}
-			> h3{
-				font-size: calc(7px + 1vw);
-			}
-			> span{
-				width: 600px;
-				font-weight: 500;
-				font-size: calc(10px + 0.2vw);
-				color: #FFFFFF;
-			}
-			.steps_mobile{
-				display: block;
-				.circles{
-					display: flex;
-					flex-direction: row;
-					justify-content: space-around;
-					> div{
-						width: 30vw;
-						>div{
-							margin-bottom: 10px;
-							width: calc(30px + 1vw);
-							height: calc(30px + 1vw);
-							border-radius: 50%;
-							background: $maincolor;
-							display: flex;
-							align-items: center;
-							justify-content: space-between;		
-							>p{
-								width: calc(30px + 1vw);
-								color: #FFFFFF;
-								text-align: center;
-								margin-bottom: 0;
-								font-family: 'Montserrat-Bold';
-								font-size: calc(20px + 1vw);
-							}	
-						}
-						>h6{
-							font-size: calc(6px + 1vw);
-							color: #FFFFFF;
-						}
-					}
-				}
-			}
-			> .about{	
-				display: inline-block;
-				width: 100%;
-				margin-top: 5%;
-				>a{
-					button{
-						margin: auto;
-						padding: 5px  calc(20px + 1vw) 5px  calc(20px + 1vw);
-					}
-				}
-				 p{
-					font-size: calc(5px + 1vw);
-					padding: 0;
-					text-decoration: underline;
-					text-decoration-skip: spaces;
-				}
-			}
-		}
-		.steps_desktop{
-			display: none ;
-		}
-	}
-}
-@media screen and (max-width: 700px) {
-	.MainSlider{
-		.main{
-			>span{
-				width: 100%;
-			}
-		}
-	}
-}
-    
-.Header{
-	flex: 0 0 auto;
-	background-color: #fff;
-	display: flex;
-	flex-direction: row;
-	justify-content: space-around;
-	img{
-		cursor: pointer;
-		width: 110px;
-		margin: 5px;
-	}
-}
-@media screen and (max-width: 1100px){
-	.Header{
-		img{
-			width: 60px;
-			margin: 10px;
-		}
-	}
-}
-
-
-.Footer{  
-    flex: 0 0 auto;
-    background-color: #FFFFFF;
-    font-family: 'Montserrat-Medium';
-        >.Section1_2_mobile{
-            display: none;
-            width: calc(300px + 2vw);
-            font-family: 'Montserrat-Medium';
-            font-size: 16px;
+.MainSlider {
+    padding: 2%;
+    padding-left: 5%;
+    padding-bottom: 4%;
+    flex: 1 0 auto;
+    display: flex;
+    flex-direction: row;
+    background: url("./images/image1.png");
+    // background: url('./images/image1.webp');
+    background-size: cover;
+    background-position: center;
+    > .main {
+        width: 90%;
+        margin: 0;
+        > h1 {
+            margin-bottom: 0;
+            font-family: "Montserrat-Bold";
+            font-weight: bold;
+            font-size: calc(17px + 2vw);
+            color: white;
             text-transform: uppercase;
-            padding: 10px 10px 0 10px;
-            flex-direction: row;
-            justify-content: space-around;
-            h5{
-                font-family: 'Montserrat-Medium';
-                font-weight: bold;
-                font-size: 16px;
+        }
+        > p {
+            margin: 0;
+            color: white;
+            font-family: "Montserrat-Medium";
+            font-style: normal;
+            font-weight: 500;
+            font-size: calc(14px + 1vw);
+        }
+        > h3 {
+            display: inline-block;
+            margin-top: 3%;
+            font-family: "Montserrat-Bold";
+            color: white;
+            font-style: normal;
+            font-weight: bold;
+            font-size: calc(7px + 1vw);
+            line-height: 200%;
+            text-transform: uppercase;
+            margin-bottom: 0;
+        }
+        > span {
+            display: inline-block;
+            font-family: "Montserrat-Light";
+            font-style: normal;
+            font-weight: 600;
+            font-size: calc(8px + 0.5vw);
+            color: #ffffff;
+        }
+        > .about {
+            display: inline-block;
+            margin: 0;
+            margin-top: 50px;
+            > a {
+                text-decoration: none;
+                border: none;
+                button {
+                    text-decoration: none;
+                    border: none;
+                    cursor: pointer;
+                    padding: 20px calc(50px + 2vw) 20px calc(50px + 2vw);
+                    font-family: "Montserrat-Medium";
+                    font-style: normal;
+                    font-weight: 600;
+                    font-size: calc(10px + 1vw);
+                    line-height: 37px;
+                    display: flex;
+                    align-items: center;
+                    text-align: center;
+                    background: $maincolor2;
+                    border-radius: 40px;
+                    color: #ffffff;
+                    &:focus {
+                        outline: none;
+                    }
+                    &:active {
+                        outline: none;
+                    }
+                }
             }
-        } 
+            p {
+                margin: auto;
+                text-align: center;
+                font-family: "Montserrat-Light";
+                font-size: 20px;
+                line-height: 24px;
+                padding-top: 20px;
+                text-decoration: underline;
+                text-decoration-skip: spaces;
+                color: #ffffff;
+            }
+        }
+    }
+    .steps_mobile {
+        display: none;
+        > div {
+            display: none;
+        }
+    }
+    .steps_desktop {
+        height: 68vh;
+        flex-grow: 1;
         display: flex;
         flex-direction: row;
-        justify-content: space-between;
-        align-items: flex-start;
-        align-content: center;
-        margin: 0;
-        padding: 0 5% 0 5%;
-        button{
-            margin: auto;
-            text-decoration: none;
-            border: none;
-            cursor: pointer;
-            padding: 5px 5px 5px 5px;
-            font-family: 'Montserrat-Medium';
-            font-size: calc(15px + 0.5vw);
-            background: $maincolor2;
-            border-radius: 5px;
-            color: #FFFFFF;
-            &:focus{
-                outline: none;
-            }
-        }
-        >.Section1_1{
+        width: 100%;
+        > .circles {
+            margin: 0% 0% 0% 20%;
             display: flex;
             flex-direction: column;
-            align-items: flex-start;
-            p{
-                margin-bottom: 5px;
-            }
-        }
-        >.Section1_2{
-            width: calc(300px + 2vw);
-            font-family: 'Montserrat-Medium';
-            font-size: 16px;
-            text-transform: uppercase;
-            padding: 10px;
-            display: flex;
-            flex: 1 2;
-            flex-direction: row;
             justify-content: space-around;
-            h5{
-                font-family: 'Montserrat-Medium';
-                font-weight: bold;
-                font-size: 16px;
+            align-items: center;
+            > div {
+                border-radius: 50%;
+                width: calc(70px + 1vw);
+                height: calc(70px + 1vw);
+                background: $maincolor;
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                > p {
+                    width: calc(70px + 1vw);
+                    color: #ffffff;
+                    text-align: center;
+                    margin-bottom: 0;
+                    font-family: "Montserrat-Bold";
+                    font-size: calc(40px + 1vw);
+                }
+            }
+            > span {
+                width: 8px;
+                height: 20vh;
+                margin-bottom: -2vw;
+                margin-top: -2vw;
+                border: 8px solid $maincolor;
             }
         }
-    >div{
+        > div {
+            margin-top: 0;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            > p {
+                max-width: 310px;
+                text-align: center;
+                margin: 0 -10px 0 -10px;
+                padding: 0 20px 0 20px;
+                padding-top: 0;
+                font-family: "Montserrat-Light";
+                font-size: 1.5vw;
+                font-weight: 900;
+                line-height: 29px;
+                color: #ffffff;
+            }
+        }
+    }
+}
+@media screen and (max-width: 1100px) {
+    .MainSlider {
+        flex: 1 0 auto;
+        .main {
+            display: block;
+            width: 100%;
+            h1 {
+                font-size: calc(15px + 2vw);
+            }
+            p {
+                font-size: calc(8px + 2vw);
+            }
+            > h3 {
+                font-size: calc(7px + 1vw);
+            }
+            > span {
+                width: 600px;
+                font-weight: 500;
+                font-size: calc(10px + 0.2vw);
+                color: #ffffff;
+            }
+            .steps_mobile {
+                display: block;
+                .circles {
+                    display: flex;
+                    flex-direction: row;
+                    justify-content: space-around;
+                    > div {
+                        width: 30vw;
+                        > div {
+                            margin-bottom: 10px;
+                            width: calc(30px + 1vw);
+                            height: calc(30px + 1vw);
+                            border-radius: 50%;
+                            background: $maincolor;
+                            display: flex;
+                            align-items: center;
+                            justify-content: space-between;
+                            > p {
+                                width: calc(30px + 1vw);
+                                color: #ffffff;
+                                text-align: center;
+                                margin-bottom: 0;
+                                font-family: "Montserrat-Bold";
+                                font-size: calc(20px + 1vw);
+                            }
+                        }
+                        > h6 {
+                            font-size: calc(6px + 1vw);
+                            color: #ffffff;
+                        }
+                    }
+                }
+            }
+            > .about {
+                display: inline-block;
+                width: 100%;
+                margin-top: 5%;
+                > a {
+                    button {
+                        margin: auto;
+                        padding: 5px calc(20px + 1vw) 5px calc(20px + 1vw);
+                    }
+                }
+                p {
+                    font-size: calc(5px + 1vw);
+                    padding: 0;
+                    text-decoration: underline;
+                    text-decoration-skip: spaces;
+                }
+            }
+        }
+        .steps_desktop {
+            display: none;
+        }
+    }
+}
+@media screen and (max-width: 700px) {
+    .MainSlider {
+        .main {
+            > span {
+                width: 100%;
+            }
+        }
+    }
+}
+
+.Header {
+    flex: 0 0 auto;
+    background-color: #fff;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    img {
+        cursor: pointer;
+        width: 80px;
+        margin: 5px;
+    }
+}
+@media screen and (max-width: 1100px) {
+    .Header {
+        img {
+            width: 60px;
+            margin: 10px;
+        }
+    }
+}
+
+.Footer {
+    flex: 0 0 auto;
+    background-color: #ffffff;
+    font-family: "Montserrat-Medium";
+    > .Section1_2_mobile {
+        display: none;
+        width: calc(300px + 2vw);
+        font-family: "Montserrat-Medium";
+        font-size: 16px;
+        text-transform: uppercase;
+        padding: 10px 10px 0 10px;
+        flex-direction: row;
+        justify-content: space-around;
+        h5 {
+            font-family: "Montserrat-Medium";
+            font-weight: bold;
+            font-size: 16px;
+        }
+    }
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-start;
+    align-content: center;
+    margin: 0;
+    padding: 0 5% 0 5%;
+    button {
+        margin: auto;
+        text-decoration: none;
+        border: none;
+        cursor: pointer;
+        padding: 5px 5px 5px 5px;
+        font-family: "Montserrat-Medium";
+        font-size: calc(15px + 0.5vw);
+        background: $maincolor2;
+        border-radius: 5px;
+        color: #ffffff;
+        &:focus {
+            outline: none;
+        }
+    }
+    > .Section1_1 {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        p {
+            margin-bottom: 5px;
+        }
+    }
+    > .Section1_2 {
+        width: calc(300px + 2vw);
+        font-family: "Montserrat-Medium";
+        font-size: 16px;
+        text-transform: uppercase;
+        padding: 10px;
+        display: flex;
+        flex: 1 2;
+        flex-direction: row;
+        justify-content: space-around;
+        h5 {
+            font-family: "Montserrat-Medium";
+            font-weight: bold;
+            font-size: 16px;
+        }
+    }
+    > div {
         padding: 0.5vw;
         text-align: center;
-        padding-bottom:0;
+        padding-bottom: 0;
     }
-    .Visa{
+    .Visa {
         display: block;
         width: calc(90px + 2vw);
         margin: auto;
     }
 }
-.Modal{
+.Modal {
     padding: 1.5vw;
     max-width: 90% !important;
     width: 500px !important;
-    font-family: 'Montserrat-Medium';
-    .ModalTitle{
+    font-family: "Montserrat-Medium";
+    .ModalTitle {
         font-size: calc(12px + 0.5vw);
         text-transform: uppercase;
     }
-    .modaaaal{
+    .modaaaal {
         display: flex;
         justify-content: space-around;
         flex-direction: row;
         align-items: center;
-        img{
+        img {
             width: calc(100px + 4vw);
         }
     }
 }
-.ModalBodyHelp{
-    font-family: 'Montserrat-Medium';
+.ModalBodyHelp {
+    font-family: "Montserrat-Medium";
     display: flex;
     flex-direction: column;
-    >div{
+    > div {
         display: flex;
         justify-content: space-around;
     }
-    input{
+    input {
         outline: none;
-        background: #FFFFFF;
+        background: #ffffff;
         border: 1px solid #999999;
         box-sizing: border-box;
         width: 100%;
         border-radius: 5px;
         padding: 10px 15px 10px;
-        transition: .225s ease-in-out;
+        transition: 0.225s ease-in-out;
         box-shadow: none;
         color: #0a1244;
         caret-color: aqua;
     }
 }
-@media (max-width: 1100px){
-    .Footer{
+@media (max-width: 1100px) {
+    .Footer {
         padding: 0;
         font-size: calc(10px + 0.3vw);
         display: flex;
         flex-direction: column-reverse;
         align-items: center;
-        >.Section1_2_mobile{
+        > .Section1_2_mobile {
             width: 100%;
             display: flex;
             flex-direction: column;
             align-items: center;
-            h5{
+            h5 {
                 font-size: calc(10px + 0.5vw);
             }
-            div{
+            div {
                 width: 100%;
                 display: flex;
                 justify-content: space-around;
             }
         }
-        button{
+        button {
             font-size: calc(10px + 0.3vw);
             margin: 0;
         }
-        >.Section1_2{
+        > .Section1_2 {
             display: none;
             padding: 0;
-        } 
-        >.Section1_1{
+        }
+        > .Section1_1 {
             display: flex;
             flex-direction: column;
             align-items: center;
             padding: 0;
             font-size: calc(7px + 0.5vw);
-            >*{
+            > * {
                 margin: 0;
             }
-        } 
+        }
     }
 }
-@media (max-width: 500px){
-    .Modal{
+
+html,
+body,
+div#__next {
+    height: 100vh;
+}
+
+.App {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+@media (max-width: 500px) {
+    .Modal {
         padding: 1vw;
-        .modaaaal{
+        .modaaaal {
             display: flex;
             justify-content: space-around;
             flex-direction: row;
             align-items: center;
-            img{
+            img {
                 width: calc(100px + 4vw);
             }
         }
     }
-    .ModalBodyHelp{
-        >div{
+    .ModalBodyHelp {
+        > div {
             flex-direction: column;
         }
     }
 }
 
+.PrepareQuestionsPage {
+    color: #fff;
+    display: flex;
+    flex: 1 0 auto;
+    flex-direction: column;
+    font-family: "Montserrat-Medium";
+    background: linear-gradient(90deg, #030a42 0%, #00d9c6 100%);
+    padding-top: 40px;
+    padding-bottom: 10px;
+    .customButton {
+        display: flex;
+        align-items: center;
+        color: white;
+        min-width: 120px;
+        display: inline-block;
+        font-family: "Montserrat-Medium";
+        font-style: normal;
+        font-weight: 400;
+        font-size: 20px;
+        line-height: 37px;
+        text-transform: uppercase;
+        cursor: pointer;
+        outline: none;
+        border: none;
+        text-align: center;
+        padding: 10px 30px;
+        background: $maincolor;
+        border-radius: 40px;
+        margin: 0 20px;
+    }
+    .QuestionBlock {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: center;
+        height: 100%;
+        h4 {
+            width: 60%;
+            text-align: center;
+        }
+        .AnswerBlock {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            flex-direction: row;
+            margin-bottom: 50px;
+        }
+    }
+
+    > h1 {
+        text-align: center;
+        font-family: "Montserrat-Medium";
+        font-weight: 400;
+        font-size: calc(20px + 1vw);
+        line-height: 44px;
+        text-transform: uppercase;
+        color: #ffffff;
+    }
+    .qa {
+        margin-left: 20vw;
+        min-height: 350px;
+    }
+    > p {
+        font-family: "Montserrat-Light";
+        text-align: center;
+        padding-top: 20px;
+        font-weight: 100;
+        font-size: 20px;
+    }
+    a {
+        text-decoration: none;
+    }
+    .AnswerBlock button {
+        display: flex;
+        align-items: center;
+        color: white;
+        min-width: 120px;
+        display: inline-block;
+        font-family: "Montserrat-Medium";
+        font-style: normal;
+        font-weight: 400;
+        font-size: 20px;
+        line-height: 37px;
+        text-transform: uppercase;
+        cursor: pointer;
+        outline: none;
+        border: none;
+        text-align: center;
+        padding: 10px 30px;
+        background: $maincolor;
+        border-radius: 40px;
+        margin: 0 20px;
+    }
+}
+
+.Modal2 {
+    .checkbox {
+        input {
+            margin: 10px;
+        }
+    }
+    padding: 1.5vw;
+    font-family: "Montserrat-Medium";
+    .ModalTitle2 {
+        margin: auto;
+        color: red;
+        font-size: calc(12px + 0.5vw);
+        text-transform: uppercase;
+    }
+    .modaaaal2 {
+        display: flex;
+        justify-content: space-around;
+        flex-direction: column;
+        align-items: center;
+        > .buttons {
+            width: 100%;
+            display: flex;
+            justify-content: space-around;
+            flex-direction: row;
+            align-items: center;
+            > a {
+                font-size: calc(12px + 0.5vw);
+                text-decoration: underline;
+            }
+            > button {
+                align-items: center;
+                color: white;
+                font-family: "Montserrat-Medium";
+                font-style: normal;
+                font-weight: 400;
+                font-size: calc(12px + 0.5vw);
+                line-height: 17px;
+                text-transform: uppercase;
+                cursor: pointer;
+                outline: none;
+                border: none;
+                padding: 10px 30px 10px 30px;
+                margin: auto;
+                background: $maincolor;
+                border-radius: 40px;
+                margin: 0;
+            }
+        }
+        > .items {
+            margin: 10px;
+            > div {
+                display: flex;
+                flex-direction: row;
+                align-items: flex-start;
+                margin: 10px;
+                p {
+                    font-size: calc(12px + 0.5vw);
+                }
+                img {
+                    margin: 5px;
+                }
+            }
+        }
+    }
+}
+
+.modal-content {
+    border-radius: 10px;
+}
+
+@media screen and (max-width: 800px) {
+    .PrepareQuestionsPage {
+        .qa {
+            margin-left: 10vw;
+            margin-right: 5vw;
+            min-height: 400px;
+        }
+        .AnswerBlock button {
+            font-size: calc(15px + 0.5vw);
+            margin: 5px;
+            min-width: 80px;
+            padding: 7px 7px;
+            line-height: normal;
+            img {
+                padding-left: 10px;
+            }
+        }
+        .customButton {
+            font-size: calc(15px + 0.5vw);
+            margin: 5px;
+            min-width: 80px;
+            padding: 7px 7px;
+            line-height: normal;
+        }
+        .QuestionBlock {
+            h4 {
+                margin-top: 30px;
+                width: 100%;
+                font-size: calc(15px + 0.5vw);
+            }
+        }
+    }
+    .Modal2 {
+        .checkbox {
+            input {
+                margin: 5px;
+            }
+        }
+        padding: 0;
+        .modaaaal2 {
+            > .buttons {
+                > button {
+                    font-size: calc(10px + 0.5vw);
+                    padding: 2%;
+                }
+            }
+            > .items {
+                margin: 0;
+                > div {
+                    margin: 5px;
+                    img {
+                        margin: 5px;
+                    }
+                }
+            }
+        }
+    }
+}
+@media screen and (max-width: 400px) {
+    .PrepareQuestionsPage {
+        .qa {
+            margin-left: 2vw;
+            margin-right: 2vw;
+            min-height: 400px;
+        }
+    }
+}
+
+.fade-appear {
+    opacity: 0;
+    z-index: 1;
+}
+.fade-appear-active {
+    opacity: 1;
+    transition: opacity 600ms linear;
+}
+.fade-enter {
+    opacity: 0;
+    z-index: 1;
+}
+.fade-enter-active {
+    opacity: 1;
+    transition: opacity 600ms linear;
+}
+.fade .modal .show {
+    padding: 0;
+}
+
+.DateInput {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    margin: 50px;
+    input {
+        width: 180px;
+        margin-bottom: 50px;
+        padding: 5px 10px;
+    }
+    > button {
+        display: flex;
+        align-items: center;
+        color: white;
+        min-width: 120px;
+        display: inline-block;
+        font-family: "Montserrat-Medium";
+        font-style: normal;
+        font-weight: 400;
+        font-size: 20px;
+        line-height: 37px;
+        text-transform: uppercase;
+        cursor: pointer;
+        outline: none;
+        border: none;
+        text-align: center;
+        padding: 10px 30px;
+        background: $maincolor;
+        border-radius: 40px;
+        margin: 0 20px;
+    }
+}
+
+.DevicePicker {
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 50px;
+}
+
+@media screen and (max-width: 800px) {
+    .DevicePicker {
+        flex-direction: column;
+    }
+}
+
+.Help {
+    width: 80%;
+    margin: 50px auto;
+    text-align: center;
+    h5,
+    p {
+        font-size: calc(15px + 0.5vw);
+    }
+    p,
+    form {
+        margin-top: 100px;
+    }
+    form {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        label {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+    }
+}
+
+.OnMain {
+    a {
+        color: #fff;
+        font-size: 20px;
+    }
+    margin-bottom: 50px;
+}
+
+.Pidstavi {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    button {
+        margin-top: 50px;
+    }
+    textarea {
+        width: 70%;
+    }
+}
+@media screen and (max-width: 800px) {
+    .Pidstavi {
+        textarea {
+            width: 90%;
+        }
+    }
+}
+
+.Policy {
+    padding: 0 5% 0 5%;
+    flex: 1 0 auto;
+    font-family: "Montserrat-Medium";
+    background: linear-gradient(90deg, #030a42 0%, #00d9c6 100%);
+    color: #fff;
+    h2 {
+        text-align: center;
+    }
+    h4 {
+        text-align: center;
+        a {
+            font-size: 0.9em;
+        }
+    }
+    ol {
+        counter-reset: item;
+        > li {
+            display: block;
+            &:before {
+                content: counters(item, ".") ". ";
+                counter-increment: item;
+            }
+        }
+    }
+    p {
+        margin: 0;
+        text-align: justify;
+    }
+    .italic {
+        font-style: italic;
+    }
+    .underlined {
+        text-decoration: underline;
+    }
+
+    h5 {
+        margin-top: 1em;
+        text-decoration: underline;
+    }
+    h6 {
+        margin-top: 3em;
+        font-weight: bold;
+    }
+}
+
+.Offer {
+    padding: 0 5% 0 5%;
+    flex: 1 0 auto;
+    font-family: "Montserrat-Medium";
+    background: linear-gradient(90deg, #030a42 0%, #00d9c6 100%);
+    color: #fff;
+    h2 {
+        text-align: center;
+    }
+    h4 {
+        text-align: center;
+        a {
+            font-size: 0.9em;
+        }
+    }
+    p {
+        margin: 0;
+        text-align: justify;
+    }
+    .italic {
+        font-style: italic;
+    }
+    .underlined {
+        text-decoration: underline;
+    }
+    > ul {
+        margin-top: 50px;
+    }
+    h5 {
+        margin-top: 1em;
+        text-decoration: underline;
+    }
+    h6 {
+        margin-top: 3em;
+        font-weight: bold;
+    }
+}
+
+.Declaration {
+    display: flex;
+    flex: 1 0 auto;
+}
+
+.Content {
+    font-family: "Montserrat-Medium";
+    background: linear-gradient(90deg, #030a42 0%, #00d9c6 100%);
+    margin-right: auto;
+    margin-left: auto;
+    padding-top: 20px;
+    width: 100%;
+    padding-bottom: 40px;
+    > h1 {
+        text-align: center;
+        font-family: "Montserrat-Medium";
+        font-weight: 400;
+        font-size: calc(20px + 1vw);
+        line-height: 44px;
+        text-transform: uppercase;
+        color: #ffffff;
+    }
+    form > button {
+        display: block;
+        margin: auto;
+        margin-top: 30px;
+        color: white;
+        font-family: "Montserrat-Medium";
+        font-style: normal;
+        font-weight: 400;
+        font-size: 30px;
+        line-height: 37px;
+        cursor: pointer;
+        width: 350px;
+        text-transform: uppercase;
+        outline: none;
+        border: none;
+        padding: 20px 50px 20px 50px;
+        background: $maincolor;
+        border-radius: 40px;
+    }
+}
+@media screen and (max-width: 1100px) {
+    .Content {
+        padding-top: 20px;
+        padding-bottom: 140px;
+        form > button {
+            width: auto;
+            padding: 15px 30px 15px 30px;
+        }
+    }
+}
+@media screen and (max-width: 500px) {
+    .Content {
+        padding-top: 20px;
+        padding-bottom: 140px;
+        form > button {
+            width: auto;
+            padding: 10px 20px 10px 20px;
+        }
+    }
+}
+
+.LiqForm {
+    transition: 0.225s;
+    display: flex;
+    align-items: center;
+    text-align: center;
+
+    button {
+        color: white;
+        font-family: "Montserrat-Medium";
+        font-style: normal;
+        font-weight: 400;
+        font-size: calc(18px + 0.5vw) !important;
+        width: calc(350px + 5vw) !important;
+        line-height: 37px;
+        cursor: pointer;
+        outline: none;
+        border: none;
+        padding: 20px 50px 20px 50px;
+        margin: auto;
+        background: #07d359;
+        border-radius: 40px;
+        img {
+            margin: 0;
+            padding-right: 10px;
+        }
+    }
+}
+@media screen and (max-width: 1100px) {
+    .LiqForm {
+        button {
+            width: auto;
+            padding: 10px 20px 10px 20px;
+        }
+        img {
+            width: calc(30px + 1vw);
+        }
+    }
+}
+
+.Form3 {
+    width: 70%;
+    margin-left: auto;
+    margin-right: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    font-family: "Montserrat-Medium";
+    > div {
+        width: 100%;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        flex-wrap: wrap;
+    }
+    .tel_mobile,
+    .carStats_mobile {
+        display: none;
+    }
+    select {
+        background-color: #fff;
+        padding: 10px 15px 10px;
+        width: 100%;
+        border-radius: 4px;
+        outline: none;
+        &:hover {
+            box-shadow: inset 0 0 1px 1px $maincolor;
+        }
+        &:focus {
+            box-shadow: inset 0 0 1px 1px $maincolor;
+        }
+    }
+    label {
+        text-align: left;
+        font-weight: 500;
+        font-size: 18px;
+        width: 100%;
+        color: white;
+        cursor: text;
+        padding-bottom: 8px;
+        input {
+            display: block;
+            outline: none;
+            background: #ffffff;
+            border: 1px solid #999999;
+            box-sizing: border-box;
+            width: 100%;
+            border-radius: 5px;
+            padding: 10px 15px 10px;
+            transition: 0.225s ease-in-out;
+            box-shadow: none;
+            color: #0a1244;
+            caret-color: $maincolor;
+            &::-webkit-input-placeholder {
+                opacity: 1;
+                transition: opacity 0.3s ease;
+            }
+            &::-moz-placeholder {
+                opacity: 1;
+                transition: opacity 0.3s ease;
+            }
+            &:-moz-placeholder {
+                opacity: 1;
+                transition: opacity 0.3s ease;
+            }
+            &:-ms-input-placeholder {
+                opacity: 1;
+                transition: opacity 0.3s ease;
+            }
+            &:focus::-webkit-input-placeholder {
+                opacity: 0;
+                transition: opacity 0.3s ease;
+            }
+            &:focus::-moz-placeholder {
+                opacity: 0;
+                transition: opacity 0.3s ease;
+            }
+            &:focus:-moz-placeholder {
+                opacity: 0;
+                transition: opacity 0.3s ease;
+            }
+            &:focus:-ms-input-placeholder {
+                opacity: 0;
+                transition: opacity 0.3s ease;
+            }
+            &:hover {
+                box-shadow: inset 0 0 1px 1px $maincolor;
+            }
+            &:focus {
+                box-shadow: inset 0 0 1px 1px $maincolor;
+            }
+            > div {
+                width: 100%;
+            }
+        }
+    }
+}
+.Form3 {
+    .b3 {
+        display: flex;
+        flex-direction: row;
+        align-items: flex-end;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        label {
+            width: 30%;
+        }
+    }
+    .b4_mobile {
+        display: none;
+    }
+    .b4 {
+        display: flex;
+        flex-direction: column;
+        > div {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+            > label {
+                width: 30%;
+            }
+        }
+    }
+    .Address {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: flex-end;
+        > .house {
+            width: 30%;
+        }
+        > .fullAdd {
+            width: 65%;
+        }
+    }
+    .TrueCam {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: flex-end;
+        > .penalty {
+            width: 30%;
+        }
+        > .number {
+            width: 65%;
+        }
+    }
+    .NotTrueCam {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: flex-end;
+        > .trackNumber {
+            width: 30%;
+        }
+        > p {
+            width: 65%;
+            font-size: 13px;
+            color: white;
+        }
+    }
+    .post,
+    .carModel,
+    .CarSpeed {
+        > div {
+            position: relative;
+            span {
+                z-index: 98;
+                cursor: pointer;
+                position: absolute;
+                right: 4%;
+                top: 22%;
+            }
+        }
+    }
+    .post_mobile,
+    .carModel_mobile {
+        > div {
+            position: relative;
+            span {
+                z-index: 98;
+                cursor: pointer;
+                position: absolute;
+                right: 3%;
+                top: 22%;
+            }
+        }
+    }
+    .article,
+    .PlacePravoporush,
+    .PoliceName {
+        > div {
+            position: relative;
+            span {
+                z-index: 98;
+                cursor: pointer;
+                position: absolute;
+                right: 1%;
+                top: 22%;
+            }
+        }
+    }
+}
+.IPN > input {
+    letter-spacing: 3px;
+}
+.NotTrueCam > .trackNumber > input,
+.TrueCam > .number > input {
+    letter-spacing: 3px;
+}
+.TEL > input {
+    letter-spacing: 1px;
+}
+.seriesANDnumber input {
+    letter-spacing: 2px;
+}
+.CarNumber input {
+    letter-spacing: 2px;
+}
+.CarSpeed input {
+    letter-spacing: 2px;
+}
+.pNumber > input {
+    letter-spacing: 2px;
+}
+
+.Indate {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    > div {
+        position: relative;
+    }
+    input[type="date"] {
+        height: 100%;
+        &::-webkit-inner-spin-button {
+            -webkit-appearance: none;
+            margin: 0;
+        }
+        -moz-appearance: textfield;
+        &::-ms-clear {
+            display: none;
+            width: 0;
+            height: 0;
+        }
+        &::-webkit-clear-button {
+            display: none;
+            width: 0;
+            height: 0;
+        }
+        &::-moz-clear-button {
+            display: none;
+            width: 0;
+            height: 0;
+        }
+        &::-webkit-inner-spin-button {
+            display: none;
+        }
+        &::-webkit-calendar-picker-indicator {
+            cursor: pointer;
+            color: transparent;
+            background: transparent;
+            z-index: 99;
+        }
+    }
+    span {
+        z-index: 98;
+        cursor: pointer;
+        position: absolute;
+        right: 7%;
+        top: 25%;
+    }
+    .popover {
+        max-width: initial;
+        > h3 {
+            color: black;
+        }
+        margin: 0;
+        margin-top: -139px;
+        opacity: 0.99;
+    }
+}
+.Postanova {
+    span {
+        z-index: 98;
+        cursor: pointer;
+        position: absolute;
+        right: 2%;
+        top: 25%;
+    }
+}
+@media screen and (max-width: 1100px) {
+    .Form3 {
+        width: 100%;
+        padding: 0 5% 0 5%;
+        label {
+            font-size: calc(10px + 0.5vw);
+        }
+    }
+}
+@media screen and (max-width: 800px) {
+    .Form3 {
+        label {
+            input {
+                padding: 5px 7px 5px;
+                border-radius: 4px;
+            }
+        }
+        select {
+            padding: 5px 7px 5px;
+        }
+        .b3 {
+            label {
+                width: 45%;
+            }
+            .PlaceVidpovidach {
+                width: 100%;
+            }
+            align-items: flex-end;
+        }
+        .b4 {
+            display: none;
+        }
+        .b4_mobile {
+            display: flex;
+            flex-direction: column;
+            > div {
+                display: flex;
+                flex-direction: row;
+                height: 70px;
+                justify-content: space-between;
+                align-items: flex-end;
+                > label {
+                    width: 45%;
+                }
+            }
+        }
+        .Address {
+            display: flex;
+            flex-direction: column;
+            width: 100%;
+            > .house {
+                width: 100%;
+            }
+            > .fullAdd {
+                width: 100%;
+            }
+        }
+        .popover {
+            max-width: initial;
+            > h3 {
+                color: black;
+            }
+            width: 222%;
+            margin-left: -122%;
+            margin-top: -139px;
+            opacity: 0.99;
+        }
+        .PlacePravoporush,
+        .PoliceName {
+            > div {
+                position: relative;
+                span {
+                    z-index: 98;
+                    cursor: pointer;
+                    position: absolute;
+                    right: 3%;
+                    top: 22%;
+                }
+            }
+        }
+    }
+}
+
+.react-datepicker-wrapper {
+    display: block !important;
+}
+.react-time-picker {
+    display: block !important;
+}
+.react-time-picker__wrapper {
+    padding: 10px 15px 10px;
+    border: 1px solid #999999;
+    border-radius: 5px;
+    background-color: #fff;
+    color: black !important;
+    input {
+        width: 10% !important;
+        border: none !important;
+        padding: 0 0 0 2px !important;
+        outline: none !important;
+        background-color: transparent !important;
+        display: inline !important;
+    }
+}
+@media screen and (max-width: 800px) {
+    .react-time-picker__wrapper {
+        padding: 5px 7px 5px;
+        border-radius: 4px;
+        input {
+            width: calc(10px + 2vw) !important;
+        }
+    }
+}
+.react-time-picker__inputGroup__leadingZero {
+    display: none !important;
+}
+.react-time-picker__inputGroup__input--hasLeadingZero {
+    margin-left: 0 !important;
+}
+
+.react-tooltip-lite {
+    background: white;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.9);
+    border-radius: 4px;
+}
+
+.react-tooltip-lite-arrow {
+    border-color: white;
+}
+
+.autocomplete-dropdown-container {
+    color: black;
+    > .suggestion-item {
+        color: black;
+    }
+}
+
+.CourtPicker {
+    input[list] {
+        width: 100%;
+        height: 400;
+    }
+}
+
+.ThankYouPage {
+    color: #fff;
+    display: block;
+    flex: 1 0 auto;
+    font-family: "Montserrat-Medium";
+    background: linear-gradient(90deg, #030a42 0%, #00d9c6 100%);
+    > h1 {
+        margin-top: 2%;
+        font-weight: 600;
+        font-size: 48px;
+        text-align: center;
+        text-transform: uppercase;
+    }
+    > p {
+        font-family: "Montserrat-Light";
+        text-align: center;
+        padding-top: 20px;
+        font-weight: 100;
+        font-size: 20px;
+    }
+    button {
+        display: block;
+        margin: auto;
+        color: #fff;
+        cursor: pointer;
+        outline: none;
+        border: 5px solid $maincolor;
+        font-size: 30px;
+        line-height: 37px;
+        text-transform: uppercase;
+        background: $maincolor;
+        border-radius: 40px;
+        padding: 10px 30px;
+        transition: 0.225s;
+
+        &:hover {
+            border-color: #fff;
+            color: $maincolor;
+            background-color: #fff;
+        }
+        > svg {
+            margin: 10px;
+        }
+        margin-top: 50px;
+    }
+    .algbut {
+        border: 5px solid #fff;
+        background: transparent;
+        padding: 10px 40px;
+    }
+}
+@media screen and (max-width: 800px) {
+    .ThankYouPage {
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        padding: 5%;
+        br {
+            display: none;
+        }
+        > h1 {
+            font-size: calc(20px + 2vw);
+        }
+        > p {
+            font-size: calc(10px + 1vw);
+        }
+        button {
+            display: flex;
+            align-items: center;
+            font-size: calc(20px + 1vw);
+            padding: calc(5px + 1vw) calc(5px + 1vw);
+        }
+        .algbut {
+            border: 3px solid #fff;
+            padding: calc(5px + 1vw) calc(15px + 1vw);
+        }
+    }
+}

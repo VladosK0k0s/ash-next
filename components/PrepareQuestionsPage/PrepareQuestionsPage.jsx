@@ -1,761 +1,564 @@
-import React, {Component} from 'react';
-import './PrepareQuestionsPage.scss';
-import arrow from './oplata.png';
-import Item from './Item/Item.jsx';
-import { Modal } from 'react-bootstrap';
-import arrow1 from './arrow.png';
-import {  CSSTransition,  TransitionGroup} from 'react-transition-group';
-import { NavLink } from 'react-router-dom';
-import Alert from 'react-bootstrap/Alert';
-import img from './Item/Chosed.png';
+import React, { Component } from "react";
+import { Modal } from "react-bootstrap";
+import Link from "next/link";
+import DateInput from "./DateInput/DateInput";
+import DevicePicker from "./DevicePicker/DevicePicker";
+import Pidstavi from "./Pidstavi/Pidstavi";
+import OnMain from "./OnMain/OnMain";
+import Help from "./Help/Help";
 
-class PrepareQuestionsPage extends Component{
-	constructor(props) {
-	  super(props);
-	  this.state = {
-			id: '',
-			url: '',
-			sendObj: '',
-			alert: false,
-			show: true,
-			applyCond: false,
-			mas: [
-			{
-				id: 1,
-				text: 'Чи заперечували Ви свою вину на місці вчинення правопорушення?'
-			},
-			{
-				id: 2,
-				text: 'Чи був складений протокол?'
-			},
-			{
-				id: 3,
-				text: 'Чи ознайомив Вас співробітник поліції із Вашими правами та обов’язками?'
-			},
-			{
-				id: 4,
-				text: 'Чи запрошувались свідки під час складання протоколу?'
-			},
-			{
-				id: 5,
-				text: 'Чи зазначена в постанові назва приладу?'
-			},
-			{
-				id: 6,
-				text: 'Чи були представлені докази, що пристроєм було заміряно швидкість саме Вашого авто?'
-			},
-			{
-				id: 7,
-				text: 'Чи були представлені докази щорічної перевірки та сертифікації приладу вимірювання швидкості?'
-			}],
-			form1Names:
-			[
-				'isCustomerDenied',
-				'isProtocolCreated',
-				'isCustomerAcknowledgedWithLaw',
-				'isWitnessAttend',
-				'isNameOfDeviceExists',
-				'isEvidenceOfSpeedShownToCustomer',
-				'isCertificatsOfDeviceShownToCustomer'
-			],
-			form1Obj:{
-				isCustomerDenied: null,
-				isProtocolCreated: null,
-				isCustomerAcknowledgedWithLaw: null,
-				isWitnessAttend: null,
-				isNameOfDeviceExists: null,
-				isEvidenceOfSpeedShownToCustomer: null,
-				isCertificatsOfDeviceShownToCustomer: null
-			},
-			chosed: [{id:1, b:null}],
-			tree:{
-				id:1,
-				apply:{
-					id:2,
-					apply:{
-						id:4,
-						apply:{
-							id:3,
-							apply:{
-								id:5,
-								apply:{
-									id:7,
-									apply:{
-										id:6,
-										apply: -1,
-										deny: -1
-									},
-									deny: {
-										id:6,
-										apply: -1,
-										deny: -1
-									}
-								},
-								deny:{
-									id:7,
-									apply:{
-										id:6,
-										apply: -1,
-										deny: -1
-									},
-									deny: {
-										id:6,
-										apply: -1,
-										deny: -1
-									}
-								}
-							},
-							deny:{
-								id:5,
-								apply:{
-									id:7,
-									apply:{
-										id:6,
-										apply: -1,
-										deny: -1
-									},
-									deny: {
-										id:6,
-										apply: -1,
-										deny: -1
-									}
-								},
-								deny:{
-									id:7,
-									apply:{
-										id:6,
-										apply: -1,
-										deny: -1
-									},
-									deny: {
-										id:6,
-										apply: -1,
-										deny: -1
-									}
-								}
-							}
-						},
-						deny:{
-							id:3,
-							apply:{
-								id:5,
-								apply:{
-										id:6,
-										apply:{
-											id:7,
-											apply:-1,
-											deny:-1
-										},
-										deny:{
-											id:7,
-											apply:-1,
-											deny:-1
-										}
-									},
-								deny:{
-										id:6,
-										apply:{
-											id:7,
-											apply:-1,
-											deny:-1
-										},
-										deny:{
-											id:7,
-											apply:-1,
-											deny:-1
-										}
-									},
-							},
-							deny:{
-								id:5,
-								apply:{
-										id:6,
-										apply:{
-											id:7,
-											apply:-1,
-											deny:-1
-										},
-										deny:{
-											id:7,
-											apply:-1,
-											deny:-1
-										}
-									},
-								deny:{
-										id:6,
-										apply:{
-											id:7,
-											apply:-1,
-											deny:-1
-										},
-										deny:{
-											id:7,
-											apply:-1,
-											deny:-1
-										}
-									},
-							},
-						}
-					},
-					deny:{
-						id:3,
-						apply:{
-							id:5,
-							apply:{
-								id:6,
-								apply:{
-									id:7,
-									apply:-1,
-									deny:-1
-								},
-								deny:{
-									id:7,
-									apply:-1,
-									deny:-1
-								}
-							},
-							deny:{
-								id:6,
-								apply:{
-									id:7,
-									apply:-1,
-									deny:-1
-								},
-								deny:{
-									id:7,
-									apply:-1,
-									deny:-1
-								}
-							},
-						},
-						deny:{
-							id:5,
-							apply:{
-								id:6,
-								apply:{
-									id:7,
-									apply:-1,
-									deny:-1
-								},
-								deny:{
-									id:7,
-									apply:-1,
-									deny:-1
-								}
-							},
-							deny:{
-								id:6,
-								apply:{
-									id:7,
-									apply:-1,
-									deny:-1
-								},
-								deny:{
-									id:7,
-									apply:-1,
-									deny:-1
-								}
-							},
-						},
-					}
-				},
-				deny:{
-					id:3,
-					apply:{
-						id:5,
-						apply:{
-							id:6,
-							apply:{
-								id:7,
-								apply:-1,
-								deny:-1
-							},
-							deny:{
-								id:7,
-								apply:-1,
-								deny:-1
-							}
-						},
-						deny:{
-							id:6,
-							apply:{
-								id:7,
-								apply:-1,
-								deny:-1
-							},
-							deny:{
-								id:7,
-								apply:-1,
-								deny:-1
-							}
-						},
-					},
-					deny:{
-						id:5,
-						apply:{
-							id:6,
-							apply:{
-								id:7,
-								apply:-1,
-								deny:-1
-							},
-							deny:{
-								id:7,
-								apply:-1,
-								deny:-1
-							}
-						},
-						deny:{
-							id:6,
-							apply:{
-								id:7,
-								apply:-1,
-								deny:-1
-							},
-							deny:{
-								id:7,
-								apply:-1,
-								deny:-1
-							}
-						},
-					},
-				}
-			},
-			curtree:{
-				id:1,
-				apply:{
-					id:2,
-					apply:{
-						id:4,
-						apply:{
-							id:3,
-							apply:{
-								id:5,
-								apply:{
-									id:7,
-									apply:{
-										id:6,
-										apply: -1,
-										deny: -1
-									},
-									deny: {
-										id:6,
-										apply: -1,
-										deny: -1
-									}
-								},
-								deny:{
-									id:7,
-									apply:{
-										id:6,
-										apply: -1,
-										deny: -1
-									},
-									deny: {
-										id:6,
-										apply: -1,
-										deny: -1
-									}
-								}
-							},
-							deny:{
-								id:5,
-								apply:{
-									id:7,
-									apply:{
-										id:6,
-										apply: -1,
-										deny: -1
-									},
-									deny: {
-										id:6,
-										apply: -1,
-										deny: -1
-									}
-								},
-								deny:{
-									id:7,
-									apply:{
-										id:6,
-										apply: -1,
-										deny: -1
-									},
-									deny: {
-										id:6,
-										apply: -1,
-										deny: -1
-									}
-								}
-							}
-						},
-						deny:{
-							id:3,
-							apply:{
-								id:5,
-								apply:{
-									id:6,
-									apply:{
-										id:7,
-										apply:-1,
-										deny:-1
-									},
-									deny:{
-										id:7,
-										apply:-1,
-										deny:-1
-									}
-								},
-								deny:{
-									id:6,
-									apply:{
-										id:7,
-										apply:-1,
-										deny:-1
-									},
-									deny:{
-										id:7,
-										apply:-1,
-										deny:-1
-									}
-								},
-							},
-							deny:{
-								id:5,
-								apply:{
-									id:6,
-									apply:{
-										id:7,
-										apply:-1,
-										deny:-1
-									},
-									deny:{
-										id:7,
-										apply:-1,
-										deny:-1
-									}
-								},
-								deny:{
-									id:6,
-									apply:{
-										id:7,
-										apply:-1,
-										deny:-1
-									},
-									deny:{
-										id:7,
-										apply:-1,
-										deny:-1
-									}
-								},
-							},
-						}
-					},
-					deny:{
-					id:3,
-					apply:{
-						id:5,
-						apply:{
-								id:6,
-								apply:{
-									id:7,
-									apply:-1,
-									deny:-1
-								},
-								deny:{
-									id:7,
-									apply:-1,
-									deny:-1
-								}
-							},
-						deny:{
-								id:6,
-								apply:{
-									id:7,
-									apply:-1,
-									deny:-1
-								},
-								deny:{
-									id:7,
-									apply:-1,
-									deny:-1
-								}
-							},
-					},
-					deny:{
-						id:5,
-						apply:{
-								id:6,
-								apply:{
-									id:7,
-									apply:-1,
-									deny:-1
-								},
-								deny:{
-									id:7,
-									apply:-1,
-									deny:-1
-								}
-							},
-						deny:{
-								id:6,
-								apply:{
-									id:7,
-									apply:-1,
-									deny:-1
-								},
-								deny:{
-									id:7,
-									apply:-1,
-									deny:-1
-								}
-							},
-					},
-				}
-				},
-				deny:{
-				id:3,
-				apply:{
-					id:5,
-					apply:{
-							id:6,
-							apply:{
-								id:7,
-								apply:-1,
-								deny:-1
-							},
-							deny:{
-								id:7,
-								apply:-1,
-								deny:-1
-							}
-						},
-					deny:{
-							id:6,
-							apply:{
-								id:7,
-								apply:-1,
-								deny:-1
-							},
-							deny:{
-								id:7,
-								apply:-1,
-								deny:-1
-							}
-						},
-				},
-				deny:{
-					id:5,
-					apply:{
-							id:6,
-							apply:{
-								id:7,
-								apply:-1,
-								deny:-1
-							},
-							deny:{
-								id:7,
-								apply:-1,
-								deny:-1
-							}
-						},
-					deny:{
-							id:6,
-							apply:{
-								id:7,
-								apply:-1,
-								deny:-1
-							},
-							deny:{
-								id:7,
-								apply:-1,
-								deny:-1
-							}
-						},
-				},
-			}
-			},
-	  };
-	}
-	handleRem = (item, bool, previd) => {
-		this.setState({sendObj: ''});
-		//console.log(previd);
-		// console.log(item);
-		// //console.log(this.state.chosed);
-		// console.log(this.state.chosed.findIndex((el)=>el.id===previd));
-		let newarr = this.state.chosed.slice(0,this.state.chosed.findIndex((el)=>el.id===previd)+1);
-		//console.log(newarr);
-		newarr[newarr.length-1].b = bool;
-		let newitem = this.state.tree;
-		newarr.forEach((el)=>{
-			let text = el.b ? 'apply' : 'deny';
-			newitem = newitem[text];
-		});
-		//console.log(newarr);
-		// this.setState({chosed: newarr, curtree: newitem});
-		let newA = newarr;
-		// console.log(newitem);
-		// console.log(this.state.curtree);
-		if(!newA.find(it => {return it.id===newitem.id})){
-			newA[newA.length-1].b = bool;
-			if(typeof newitem == "object"){
-				let newObj = this.state.form1Obj;
-				newObj[this.state.form1Names[previd-1]] = bool;
-				newA.push({id: newitem.id, b:null});
-	        	this.setState({
-	        		chosed: newA,
-	        		curtree: newitem,
-	        		form1Obj: newObj
-	        	});
-			}
-			else{
-				let newObj = this.state.form1Obj;
-				newObj[this.state.form1Names[previd-1]] = bool;
-				this.setState({
-	        		chosed: newA,
-	        		curtree: newitem,
-	        		form1Obj: newObj
-	        	});
-				if(newitem===-1) {
-					this.prepareToSend()
-					this.setState({sorry: false})
-				}
-				if(newitem===-2) this.setState({sorry: true});
-			}	
+class PrepareQuestionsPage extends Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            id: "",
+            url: "",
+            sendObj: {},
+            alert: false,
+            show: true,
+            curQuestion: {},
+            applyCond: false,
+            argCount: 0,
+            allQuestionFilled: false,
+            mas: [
+                {
+                    id: 1,
+                    text:
+                        "Чи заперечували Ви свою вину на місці вчинення правопорушення?",
+                },
+                {
+                    id: 2,
+                    text: "Чи був складений протокол?",
+                },
+                {
+                    id: 3,
+                    text:
+                        "Чи ознайомив Вас співробітник поліції із Вашими правами та обов’язками?",
+                },
+                {
+                    id: 4,
+                    text:
+                        "Чи запрошувались свідки під час складання протоколу?",
+                },
+                {
+                    id: 5,
+                    text: "Чи зазначена в постанові назва приладу?",
+                },
+                {
+                    id: 6,
+                    text:
+                        "Чи були представлені докази, що пристроєм було заміряно швидкість саме Вашого авто?",
+                },
+                {
+                    id: 7,
+                    text:
+                        "Чи були представлені докази щорічної перевірки та сертифікації приладу вимірювання швидкості?",
+                },
+            ],
+            chosed: [],
+            stepsArr: [
+                {
+                    id: 1,
+                    text: (
+                        <p>
+                            Коли Ви отримали постанову? <br />
+                            Звертаю увагу, що оскарження автоштрафу здійснюється
+                            виключно протягом 10 днів з дати вручення такої
+                            постанови
+                        </p>
+                    ),
+                    component: <DateInput handleChoose={this.handleChoose} />,
+                    nextYesId: 2,
+                    nextNoId: 3,
+                },
+                {
+                    id: 2,
+                    text:
+                        "За допомогою якого пристрою було зафіксоване порушення ПДР?",
+                    component: (
+                        <DevicePicker handleChoose={this.handleChoose} />
+                    ),
+                    nextYesId: 4,
+                    nextNoId: 5,
+                },
+                {
+                    id: 3,
+                    text:
+                        "На жаль, Ви пропустили строк для оскарження постанови та не зможете скористатися даним сервісом",
+                    component: <OnMain />,
+                    nextYesId: null,
+                    nextNoId: null,
+                },
+                {
+                    id: 4,
+                    text: "Вам було роз'яснено Ваші права?",
+                    component: null,
+                    argumentYes: { wasCustomerAcknowledgedWithLaw: true },
+                    argumentNo: { wasCustomerAcknowledgedWithLaw: false },
+                    nextYesId: 14,
+                    nextNoId: 14,
+                    addArgOn: "no",
+                },
+                {
+                    id: 5,
+                    text: `Чи додано докази перевищення швидкості 
+                        саме автомобілем Скаржника?Таким доказом 
+                        може бути чітке зображення транспортного 
+                        засобу (зазначено марку, колір, номерний знак) 
+                        та, по можливості, водія, що знаходився за кермом`,
+                    component: null,
+                    argumentYes: { wasEvidenceThatCustomerDriver: true },
+                    argumentNo: { wasEvidenceThatCustomerDriver: false },
+                    nextYesId: 6,
+                    nextNoId: 6,
+                    addArgOn: "no",
+                },
+                {
+                    id: 6,
+                    text: `Чи можна з прикріплених до Постанови фото  
+                    ідентифікувати саме автомобіль Скаржника?`,
+                    component: null,
+                    argumentYes: { canIdentifyCustomersCar: true },
+                    argumentNo: { canIdentifyCustomersCar: false },
+                    nextYesId: 7,
+                    nextNoId: 7,
+                    addArgOn: "no",
+                },
+                {
+                    id: 7,
+                    text: `Чи зазначено у Постанові технічний засіб, за допомогою якого відбулася фіксація?`,
+                    component: null,
+                    argumentYes: { isDeviceSpecified: true },
+                    argumentNo: { isDeviceSpecified: false },
+                    nextYesId: 8,
+                    nextNoId: 8,
+                    addArgOn: "no",
+                },
+                {
+                    id: 8,
+                    text: `Хто перебував за кермом під час фіксації адміністративного правопорушення?`,
+                    component: null,
+                    yesText: "Перебував я",
+                    noText: "Інша особа (не я)",
+                    argumentYes: { wasCustomerDrivingCar: true },
+                    argumentNo: { wasCustomerDrivingCar: false },
+                    nextYesId: 9,
+                    nextNoId: 10,
+                },
+                {
+                    id: 9,
+                    text: `Чи зазначені в постанові про адміністративне 
+                    правопорушення посилання на конкретне положення ПДР 
+                    України, яке Вами порушено?`,
+                    component: null,
+                    argumentYes: { isReferenceToPDRExists: true },
+                    argumentNo: { isReferenceToPDRExists: false },
+                    nextYesId: 12,
+                    nextNoId: 12,
+                    addArgOn: "no",
+                },
+                {
+                    id: 10,
+                    text: `Чи наявні у Вас докази, що можуть підтвердити цю обставину? 
+                    Наприклад: наказ про відрядження; 
+                    показання друзів, знайомих; 
+                    був у відпустці чи за кордоном, є квитки`,
+                    argumentYes: {
+                        areEvidenceThatCustomerWasNotDrivingCarPresent: true,
+                    },
+                    argumentNo: {
+                        areEvidenceThatCustomerWasNotDrivingCarPresent: false,
+                    },
+                    component: null,
+                    nextYesId: 11,
+                    nextNoId: 9,
+                    addArgOn: "yes",
+                },
+                {
+                    id: 11,
+                    text: null,
+                    component: <Pidstavi handleChoose={this.handleChoose} />,
+                    nextYesId: 9,
+                    nextNoId: 9,
+                },
+                {
+                    id: 12,
+                    text: `Чи зазначено в постанові про адміністративне правопорушення 
+                    посилання на марку, серійний номер технічного засобу, 
+                    яким здійснено фото або відеозапис правопорушення?`,
+                    component: null,
+                    argumentYes: { isReferenceToMarkExists: true },
+                    argumentNo: { isReferenceToMarkExists: false },
+                    nextYesId: 13,
+                    nextNoId: 13,
+                    addArgOn: "no",
+                },
+
+                {
+                    id: 13,
+                    text: `Чи зазначені в постанові про адміністративне правопорушення відомості 
+                    про адресу веб-сайту в мережі Інтернет на якому можна ознайомитися із 
+                    зображенням чи відеозаписом транспортного засобу в момент вчинення 
+                    адміністративного правопорушення?`,
+                    component: null,
+                    argumentYes: { isDataAboutSiteExists: true },
+                    argumentNo: { isDataAboutSiteExists: false },
+                    nextYesId: 200,
+                    nextNoId: 200,
+                    addArgOn: "no",
+                },
+                {
+                    id: 14,
+                    text: `Чи зазначено у Постанові технічний засіб, за допомогою якого відбулася фіксація?`,
+                    component: null,
+                    argumentYes: { isNameOfDeviceExists: true },
+                    argumentNo: { isNameOfDeviceExists: false },
+                    nextYesId: 15,
+                    nextNoId: 15,
+                    addArgOn: "no",
+                },
+                {
+                    id: 15,
+                    text: `Чи мали Ви можливість надати пояснення стосовно
+                     вчиненого правопорушення та заявляти клопотання?`,
+                    component: null,
+                    argumentYes: { wasOpportunityToExplain: true },
+                    argumentNo: { wasOpportunityToExplain: false },
+                    nextYesId: 16,
+                    nextNoId: 16,
+                    addArgOn: "no",
+                },
+                {
+                    id: 16,
+                    text: `Чи відмовляли Вам у задоволенні клопотання про надання правової допомоги`,
+                    component: null,
+                    argumentYes: { wasDeniedToLawHelp: true },
+                    argumentNo: { wasDeniedToLawHelp: false },
+                    nextYesId: 17,
+                    nextNoId: 17,
+                    addArgOn: "yes",
+                },
+                {
+                    id: 17,
+                    text: `Хто перебував за кермом під час фіксації адміністративного правопорушення?`,
+                    component: null,
+                    yesText: "Перебував я",
+                    noText: "Інша особа (не я)",
+                    argumentYes: { wasCustomerDrivingCar: true },
+                    argumentNo: { wasCustomerDrivingCar: false },
+                    nextYesId: 200,
+                    nextNoId: 18,
+                },
+                {
+                    id: 18,
+                    text: `Чи наявні у Вас докази, що можуть підтвердити цю обставину? 
+                    Наприклад: наказ про відрядження; 
+                    показання друзів, знайомих; 
+                    був у відпустці чи за кордоном, є квитки`,
+                    component: null,
+                    argumentYes: {
+                        areEvidenceThatCustomerWasNotDrivingCarPresent: true,
+                    },
+                    argumentNo: {
+                        areEvidenceThatCustomerWasNotDrivingCarPresent: false,
+                    },
+                    nextYesId: 19,
+                    nextNoId: 200,
+                    addArgOn: "yes",
+                },
+                {
+                    id: 19,
+                    text: null,
+                    component: <Pidstavi handleChoose={this.handleChoose} />,
+                    nextYesId: 200,
+                    nextNoId: 200,
+                },
+                {
+                    id: 200,
+                },
+            ],
+        };
+    }
+    componentDidMount() {
+        this.setState({
+            curQuestion: this.state.stepsArr[0],
+            chosed: [1],
+        });
+    }
+    componentDidUpdate() {
+        console.log(this.state.sendObj, this.state.argCount);
+    }
+    handleGetBack = () => {
+        this.setState({
+            curQuestion: this.state.stepsArr.find(
+                (el) => el.id == this.state.chosed[this.state.chosed.length - 2]
+            ),
+            chosed: this.state.chosed.slice(0, this.state.chosed.length - 1),
+        });
+    };
+
+    handleChoose = (status, obj) => {
+        const { curQuestion } = this.state;
+        if (status === "yes") {
+            if (curQuestion.argumentYes) {
+                this.setState({
+                    sendObj: Object.assign(
+                        this.state.sendObj,
+                        curQuestion.argumentYes
+                    ),
+                });
+            }
+            if (curQuestion.addArgOn === "yes") {
+                this.addArgument();
+            }
+            const idObj = this.state.stepsArr.find(
+                (el) => el.id === curQuestion.nextYesId
+            );
+            this.setState({
+                curQuestion: idObj,
+                chosed: [...this.state.chosed, idObj.id],
+            });
+            if (curQuestion.nextYesId === 200) {
+                localStorage.setItem(
+                    "sendObj",
+                    JSON.stringify(this.state.sendObj)
+                );
+                localStorage.setItem("passed", JSON.stringify({ pass: true }));
+                this.setState({
+                    allQuestionFilled: true,
+                });
+            }
+        } else if (status === "no") {
+            if (curQuestion.argumentNo) {
+                this.setState({
+                    sendObj: Object.assign(
+                        this.state.sendObj,
+                        curQuestion.argumentNo
+                    ),
+                });
+            }
+            if (curQuestion.addArgOn === "no") {
+                this.addArgument();
+            }
+            const idObj = this.state.stepsArr.find(
+                (el) => el.id === curQuestion.nextNoId
+            );
+            this.setState({
+                curQuestion: idObj,
+                chosed: [...this.state.chosed, idObj.id],
+            });
+            if (curQuestion.nextNoId === 200) {
+                localStorage.setItem(
+                    "sendObj",
+                    JSON.stringify(this.state.sendObj)
+                );
+                localStorage.setItem("passed", JSON.stringify({ pass: true }));
+                this.setState({
+                    allQuestionFilled: true,
+                });
+            }
+        } else {
+            if (status === "yes_") {
+                const idObj = this.state.stepsArr.find(
+                    (el) => el.id === curQuestion.nextYesId
+                );
+                this.setState({
+                    curQuestion: idObj,
+                    chosed: [...this.state.chosed, idObj.id],
+                    sendObj: Object.assign(this.state.sendObj, obj),
+                });
+                if (curQuestion.nextYesId === 200) {
+                    localStorage.setItem(
+                        "sendObj",
+                        JSON.stringify(this.state.sendObj)
+                    );
+                    localStorage.setItem(
+                        "passed",
+                        JSON.stringify({ pass: true })
+                    );
+                    this.setState({
+                        allQuestionFilled: true,
+                    });
+                }
+            } else if (status === "no_") {
+                const idObj = this.state.stepsArr.find(
+                    (el) => el.id === curQuestion.nextNoId
+                );
+                this.setState({
+                    curQuestion: idObj,
+                    chosed: [...this.state.chosed, idObj.id],
+                    sendObj: Object.assign(this.state.sendObj, obj),
+                });
+                if (curQuestion.nextNoId === 200) {
+                    localStorage.setItem(
+                        "sendObj",
+                        JSON.stringify(this.state.sendObj)
+                    );
+                    localStorage.setItem(
+                        "passed",
+                        JSON.stringify({ pass: true })
+                    );
+                    this.setState({
+                        allQuestionFilled: true,
+                    });
+                }
+            }
         }
-	}
-	handleAdd = (item, bool, previd) => {
-		let newA = this.state.chosed;
-		//console.log(newA, item);
-		if(!newA.find(it => {return it.id===item.id})){
-			newA[newA.length-1].b = bool;
-			if(typeof item == "object"){
-				let newObj = this.state.form1Obj;
-				newObj[this.state.form1Names[previd-1]] = bool;
-				newA.push({id: item.id, b:null});
-	        	this.setState({
-	        		chosed: newA,
-	        		curtree: item,
-	        		form1Obj: newObj
-	        	});
-			}
-			else{
-				let newObj = this.state.form1Obj;
-				newObj[this.state.form1Names[previd-1]] = bool;
-				this.setState({
-	        		chosed: newA,
-	        		curtree: item,
-	        		form1Obj: newObj
-	        	});
-				if(item===-1) {
-					this.prepareToSend()
-					this.setState({sorry: false})
-				}
-				if(item===-2) this.setState({sorry: true});
-			}	
+    };
+
+    addArgument = () => {
+        console.log("added");
+        this.setState({ argCount: this.state.argCount + 1 });
+    };
+
+    handleapplyCond = () => {
+        return this.setState({ applyCond: !this.state.applyCond });
+    };
+    setalert = (e) => {
+        e.preventDefault();
+        this.setState({ alert: true });
+    };
+    handleClose = () => {
+        if (this.state.applyCond) return this.setState({ show: false });
+        else return;
+    };
+    render() {
+        const { curQuestion, allQuestionFilled, argCount, chosed } = this.state;
+        console.log("curQuestion", curQuestion);
+        console.log("chosed", chosed);
+        if (allQuestionFilled && argCount > 0) {
+            return this.props.router.push({
+                pathname: "/declaration/1",
+            });
         }
-	}
-	handleapplyCond = () =>{
-		return this.setState({applyCond: !this.state.applyCond});
-	}
-	reject = () =>{
-		console.log('Sorry');
-	}
-	prepareToSend = () =>{
-		let sendObj = {};
-		this.state.form1Obj.isProtocolCreated === false ? sendObj.isProtocolCreated = true : sendObj.isProtocolCreated = false;
-		this.state.form1Obj.isWitnessAttend === false ? sendObj.isWitnessAttend = true : sendObj.isWitnessAttend = false;
-		this.state.form1Obj.isCustomerAcknowledgedWithLaw === false ? sendObj.isCustomerAcknowledgedWithLaw = true : sendObj.isCustomerAcknowledgedWithLaw = false;
-		this.state.form1Obj.isNameOfDeviceExists === false ? sendObj.isNameOfDeviceExists = true : sendObj.isNameOfDeviceExists = false;
-		this.state.form1Obj.isCertificatsOfDeviceShownToCustomer === false ? sendObj.isCertificatsOfDeviceShownToCustomer = true : sendObj.isCertificatsOfDeviceShownToCustomer = false;
-		if(this.state.form1Obj.isEvidenceOfSpeedShownToCustomer === false) sendObj.isEvidenceOfSpeedShownToCustomer = false;
-		else if(this.state.form1Obj.isEvidenceOfSpeedShownToCustomer === true) sendObj.isEvidenceOfSpeedShownToCustomer = true;
-		else sendObj.isEvidenceOfSpeedShownToCustomer = null;
-		this.setState({sendObj, alert: false}, () => {
-			localStorage.setItem('sendObj', JSON.stringify(sendObj));
-			localStorage.setItem('passed', JSON.stringify({pass: this.state.applyCond}));
-		});
-	}
-	Show = (e) => {
-		e.preventDefault();
-		console.log(this.state.sendObj);
-	}
-	setalert = (e) =>{
-		e.preventDefault();
-		this.setState({alert: true})
-	}
-	handleClose = () => {
-		if(this.state.applyCond) return this.setState({show: false});
-		else return;
-	}
-	render(){
-		return(
-			<div className='PrepareQuestionsPage'>
-				<h1>Cформувати позов</h1>
-				<form onSubmit={this.setalert}>
-					<TransitionGroup className='qa'>
-						{
-							this.state.chosed.map((item, i) => (
-								<CSSTransition 
-									key={i}
-									in={this.state.hover}
-									appear={true}
-									timeout={600}
-									classNames='fade'
-								>
-								<Item tree={this.state.curtree} item={this.state.mas[item.id-1]} chosed={this.state.chosed} rem={this.handleRem} id={item.id} add={this.handleAdd}/>
-								</CSSTransition>				           	
-							))
-						}
-					</TransitionGroup>
-					{!this.state.sendObj
-						?	<>
-								{!this.state.alert
-									? <button>Продовжити<img src={arrow} onClick={this.setalert} alt="oplataimg"/></button>
-									: <Alert style={{width: '250px', textAlign: 'center', display: 'block', margin: 'auto'}} variant='danger'>Заповніть усі відповіді! </Alert>
-								}
-							</>
-						: 	<NavLink to = '/declaration'>
-								<button>Продовжити<img src={arrow} alt="oplataimg"/></button>
-							</NavLink>
-					}
-					
-				</form>
-				<Modal dialogClassName={'Modal2'} show={this.state.show} onHide={this.handleClose} backdrop="static" keyboard="false" size="lg" animation={true} aria-labelledby="contained-modal-title-vcenter"
-		centered>
-					<Modal.Header>
-					<Modal.Title className='ModalTitle2'>Застереження:</Modal.Title>
-					</Modal.Header>
-					<Modal.Body className='modaaaal2'>
-						<div className='items'>
-							<div>
-								<img src={arrow1} alt=""/>
-								<p>Просимо Вас бути уважними під час заповнення даних необхідних для формування позову.</p></div>
-							<div>
-								<img src={arrow1} alt=""/>
-								<p>Якщо Ви вже оплатили цей штраф, то наші послуги не є для Вас актуальними.</p></div>
-							<div>
-								<img src={arrow1} alt=""/>
-								<p>Ми не несемо відповідальності у разі  постановлення ухвали суду не на Вашу користь.</p></div>
-							<div>
-								<img src={arrow1} alt=""/>
-								<p>Ця форма використовується лише для генерації тексту позовної заяви. Ми не збираємо і не зберігаємо інформацію, яку ви вводите.</p></div>
-							<div className="checkbox">
-								<input type="checkbox" id="scales" checked = {this.state.applyCond} onClick={this.handleapplyCond}/>
-								<p>Погоджуюсь з <NavLink to = '/offer'>умовами Публічної оферти</NavLink></p>
-							</div>
-						</div>
-						<div className='buttons'>
-							<NavLink to = '/'>
-								На головну
-							</NavLink>
-							<button style={{whiteSpace: "nowrap" }} onClick={this.handleClose}>Ознайомлений(-а)</button>
-						</div>
-						
-					</Modal.Body>
-				</Modal>
-			</div>
-		)
-	}
+        if (allQuestionFilled && argCount === 0) {
+            return (
+                <div className="PrepareQuestionsPage">
+                    <Help />
+                </div>
+            );
+        }
+        return (
+            <div className="PrepareQuestionsPage">
+                <h1>Cформувати позов</h1>
+                {curQuestion.id && (
+                    <div className="QuestionBlock">
+                        {curQuestion.text && <h4>{curQuestion.text}</h4>}
+                        {curQuestion.component ? (
+                            curQuestion.component
+                        ) : (
+                            <div className={"AnswerBlock"}>
+                                <button
+                                    onClick={() => {
+                                        this.handleChoose("yes");
+                                    }}
+                                >
+                                    {curQuestion.yesText
+                                        ? curQuestion.yesText
+                                        : "Так"}
+                                </button>
+                                <button
+                                    onClick={() => {
+                                        this.handleChoose("no");
+                                    }}
+                                >
+                                    {curQuestion.noText
+                                        ? curQuestion.noText
+                                        : "Ні"}
+                                </button>
+                                <button
+                                    onClick={() => {
+                                        this.handleGetBack();
+                                    }}
+                                >
+                                    Назад
+                                </button>
+                            </div>
+                        )}
+                    </div>
+                )}
+
+                <Modal
+                    dialogClassName={"Modal2"}
+                    show={this.state.show}
+                    onHide={this.handleClose}
+                    backdrop="static"
+                    keyboard="false"
+                    size="lg"
+                    animation={true}
+                    aria-labelledby="contained-modal-title-vcenter"
+                    centered
+                >
+                    <Modal.Header>
+                        <Modal.Title className="ModalTitle2">
+                            Застереження:
+                        </Modal.Title>
+                    </Modal.Header>
+                    <Modal.Body className="modaaaal2">
+                        <div className="items">
+                            <div>
+                                <img src="/images/arrow.png" alt="arrow" />
+                                <p>
+                                    Просимо Вас бути уважними під час заповнення
+                                    даних необхідних для формування позову.
+                                </p>
+                            </div>
+                            <div>
+                                <img src="/images/arrow.png" alt="arrow" />
+                                <p>
+                                    Якщо Ви вже оплатили цей штраф, то наші
+                                    послуги не є для Вас актуальними.
+                                </p>
+                            </div>
+                            <div>
+                                <img src="/images/arrow.png" alt="arrow" />
+                                <p>
+                                    Ми не несемо відповідальності у разі
+                                    постановлення ухвали суду не на Вашу
+                                    користь.
+                                </p>
+                            </div>
+                            <div>
+                                <img src="/images/arrow.png" alt="arrow" />
+                                <p>
+                                    Ця форма використовується лише для генерації
+                                    тексту позовної заяви. Ми не збираємо і не
+                                    зберігаємо інформацію, яку ви вводите.
+                                </p>
+                            </div>
+                            <div className="checkbox">
+                                <input
+                                    type="checkbox"
+                                    id="scales"
+                                    checked={this.state.applyCond}
+                                    onClick={this.handleapplyCond}
+                                />
+                                <p>
+                                    Погоджуюсь з{" "}
+                                    <Link href="/offer">
+                                        умовами Публічної оферти
+                                    </Link>{" "}
+                                    та{" "}
+                                    <Link href="/policy">
+                                        умовами Політики конфіденційності
+                                    </Link>
+                                </p>
+                            </div>
+                        </div>
+                        <div className="buttons">
+                            <Link href="/">На головну</Link>
+                            <button
+                                style={{ whiteSpace: "nowrap" }}
+                                onClick={this.handleClose}
+                            >
+                                Ознайомлений(-а)
+                            </button>
+                        </div>
+                    </Modal.Body>
+                </Modal>
+            </div>
+        );
+    }
 }
 
 export default PrepareQuestionsPage;

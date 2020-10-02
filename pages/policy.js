@@ -1,12 +1,12 @@
-import MainSlider from "../components/MainSlider/MainSlider";
+import Policy from "../components/Policy/Policy";
 import Header from "../components/Header/Header";
 import Footer from "../components/Footer/Footer";
 
-export default function Home() {
+export default function PolicyPage(props) {
     return (
         <div className="App">
             <Header />
-            <MainSlider />
+            <Policy />
             <Footer />
         </div>
     );
