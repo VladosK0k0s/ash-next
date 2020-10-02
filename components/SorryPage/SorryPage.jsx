@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import "./SorryPage.scss";
 
 class SorryPage extends Component {
     constructor(props) {
